@@ -1,0 +1,19 @@
+server:
+   port: 9960
+spring:
+   profiles:
+      active: dev
+
+rocketmq:
+   producer:
+      groupName: vehicleProducerGroup
+      namesrvAddr: 10.50.20.166:9876
+      maxMessageSize: 4096
+      sendMsgTimeout: 10000
+   consumer:
+      namesrvAddr: 10.50.20.166:9876
+      consumeThreadMin: 20
+      consumeThreadMax: 64
+
+
+
