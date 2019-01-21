@@ -22,6 +22,7 @@ public class ProducerConfig {
     private String namesrvAddr;
     private int maxMessageSize;
     private int sendMsgTimeout;
+    private int topicQueueNums;
 
     @Bean("testProducer")
     public DefaultMQProducer testProducer() throws MQClientException {
@@ -29,7 +30,10 @@ public class ProducerConfig {
         producer.setNamesrvAddr(namesrvAddr);
         producer.setMaxMessageSize(maxMessageSize);
         producer.setSendMsgTimeout(sendMsgTimeout);
-        producer.setProducerGroup("testProducerGroup");
+        producer.setProducerGroup(groupName);
+        producer.setDefaultTopicQueueNums(topicQueueNums);
+        producer.setMaxMessageSize(maxMessageSize);
+        producer.setRetryAnotherBrokerWhenNotStoreOK(true);
         producer.start();
         //producer.setCreateTopicKey("AUTO_CREATE_TOPIC_KEY");//这行存在会报错？？？？
         return producer;
